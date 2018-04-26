@@ -1,6 +1,26 @@
 import requests
 import bs4
+import json
 from flask import Flask
+
+
+app = Flask(__name__)
+
+
+@app.route('/gethot', methods =['GET'])
+def get_hot():
+    return get_news()
+
+
+@app.route('/getrising', methods=['GET'])
+def get_rising():
+    return get_news('rising/')
+
+
+@app.route('/gettop', methods=['GET'])
+def get_top():
+    return get_news('top/')
+
 
 def get_news(category=''):
     index_url = "http://www.reddit.com/"
@@ -19,20 +39,4 @@ def get_news(category=''):
         dict['link'] = info['href']
         dict['subreddit'] = subreddit
         ret.append(dict)
-    return ret
-
-
-def get_hot():
-    return get_news()
-
-
-def get_rising():
-    return get_news('rising/')
-
-
-def get_top():
-    return get_news('top/')
-
-
-posts = get_hot()
-print(posts)
+    return json.dumps(ret)
