@@ -1,10 +1,9 @@
-import json
 import requests
 import bs4
 
 
 def get_news():
-    index_url = "http://www.reddit.com/top/"
+    index_url = "http://www.reddit.com/"
     session = requests.Session()
     session.headers.update({'User-Agent': 'Custom user agent'})
     response = session.get(index_url)
@@ -23,5 +22,6 @@ def get_news():
     return ret
 
 
-posts = get_news()
-print("hello")
+
+print(get_news())
+print("Hello world")
