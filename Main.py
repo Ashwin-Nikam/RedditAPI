@@ -45,3 +45,7 @@ def get_news(category=''):
         dict['subreddit'] = subreddit
         ret.append(dict)
     return json.dumps(ret)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
