@@ -2,11 +2,11 @@ import requests
 import bs4
 
 
-def get_news():
+def get_news(category=''):
     index_url = "http://www.reddit.com/"
     session = requests.Session()
     session.headers.update({'User-Agent': 'Custom user agent'})
-    response = session.get(index_url)
+    response = session.get(index_url + category)
     print(response.text)
     ret = []
     soup = bs4.BeautifulSoup(response.text, "html.parser")
@@ -22,6 +22,17 @@ def get_news():
     return ret
 
 
+def get_hot():
+    return get_news()
 
-print(get_news())
-print("Hello world")
+
+def get_rising():
+    return get_news('rising/')
+
+
+def get_top():
+    return get_news('top/')
+
+
+posts = get_hot()
+print(posts)
