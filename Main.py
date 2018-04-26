@@ -7,6 +7,11 @@ from flask import Flask, jsonify, make_response
 app = Flask(__name__)
 
 
+@app.route("/")
+def hello():
+    return "Welcome to my custom API"
+
+
 @app.route('/gethot', methods =['GET'])
 def get_hot():
     return get_news()
@@ -27,7 +32,12 @@ def not_found(error):
     return make_response(jsonify({'error' : 'Page not found'}), 404)
 
 
-def get_news(category=''):
+@app.route('/r/<string:subreddit>', methods=['GET'])
+def get_funny(subreddit):
+    return get_news('r/'+subreddit+'/', 1)
+
+
+def get_news(category='', cattype=0):
     index_url = "http://www.reddit.com/"
     session = requests.Session()
     session.headers.update({'User-Agent': 'Custom user agent'})
@@ -39,10 +49,11 @@ def get_news(category=''):
     for post in posts:
         dict = {}
         info = post.select("p.title a")[0]
-        subreddit = post.select("p.tagline a")[1].text.capitalize()
         dict['title'] = info.text
         dict['link'] = info['href']
-        dict['subreddit'] = subreddit
+        if cattype == 0:
+            subreddit = post.select("p.tagline a")[1].text.capitalize()
+            dict['subreddit'] = subreddit
         ret.append(dict)
     return json.dumps(ret)
 
