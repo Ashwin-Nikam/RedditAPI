@@ -1,6 +1,6 @@
 import requests
 import bs4
-
+from flask import Flask
 
 def get_news(category=''):
     index_url = "http://www.reddit.com/"
