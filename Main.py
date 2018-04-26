@@ -1,7 +1,7 @@
 import requests
 import bs4
 import json
-from flask import Flask
+from flask import Flask, jsonify, make_response
 
 
 app = Flask(__name__)
@@ -20,6 +20,11 @@ def get_rising():
 @app.route('/gettop', methods=['GET'])
 def get_top():
     return get_news('top/')
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error' : 'Page not found'}), 404)
 
 
 def get_news(category=''):
