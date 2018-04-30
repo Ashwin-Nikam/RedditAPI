@@ -1,7 +1,7 @@
 import requests
 import bs4
 import json
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify, make_response, render_template
 
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Welcome to my custom API"
+    return render_template('WelcomePage.html')
 
 
 @app.route('/gethot', methods =['GET'])
