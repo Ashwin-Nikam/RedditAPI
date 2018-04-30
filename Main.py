@@ -19,9 +19,10 @@ def get_hot():
 
 @app.route('/getrising', methods=['GET'])
 def get_rising():
-    ret = get_news('rising/')
-    print(is_json(ret))
-    return ret
+    posts = get_news('rising/')
+    for post in posts:
+        print(post)
+    return render_template("RisingPage.html", posts=posts)
 
 
 @app.route('/gettop', methods=['GET'])
@@ -57,7 +58,7 @@ def get_news(category='', cattype=0):
             subreddit = post.select("p.tagline a")[1].text.capitalize()
             dict['subreddit'] = subreddit
         ret.append(dict)
-    return json.dumps(ret)
+    return ret
 
 
 def is_json(myjson):
