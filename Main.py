@@ -19,7 +19,9 @@ def get_hot():
 
 @app.route('/getrising', methods=['GET'])
 def get_rising():
-    return get_news('rising/')
+    ret = get_news('rising/')
+    print(is_json(ret))
+    return ret
 
 
 @app.route('/gettop', methods=['GET'])
@@ -56,6 +58,14 @@ def get_news(category='', cattype=0):
             dict['subreddit'] = subreddit
         ret.append(dict)
     return json.dumps(ret)
+
+
+def is_json(myjson):
+    try:
+        json_object = json.loads(myjson)
+    except ValueError:
+        return False
+    return True
 
 
 if __name__ == '__main__':
