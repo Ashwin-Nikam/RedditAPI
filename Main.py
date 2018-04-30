@@ -20,8 +20,6 @@ def get_hot():
 @app.route('/getrising', methods=['GET'])
 def get_rising():
     posts = get_news('rising/')
-    for post in posts:
-        print(post)
     return render_template("RisingPage.html", posts=posts)
 
 
