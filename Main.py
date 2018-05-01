@@ -14,7 +14,8 @@ def hello():
 
 @app.route('/gethot', methods =['GET'])
 def get_hot():
-    return get_news()
+    posts = get_news()
+    return render_template("HotPage.html", posts=posts)
 
 
 @app.route('/getrising', methods=['GET'])
@@ -25,7 +26,8 @@ def get_rising():
 
 @app.route('/gettop', methods=['GET'])
 def get_top():
-    return get_news('top/')
+    posts = get_news('top/')
+    return render_template("TopPage.html", posts=posts)
 
 
 @app.errorhandler(404)
