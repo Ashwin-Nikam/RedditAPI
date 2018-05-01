@@ -18,9 +18,10 @@ $ sudo pip3 install virtualenv
 $ git clone https://github.com/Ashwin-Nikam/RedditAPI.git
 $ cd RedditAPI
 ```
-* Run the virtual environment
+* Run the virtual environment and install all required files
 ```
 $ source venv/bin/activate
+$ pip3 install -r requirements.txt
 ```
 * Now that venv is running, we have all the necessary libraries installed. We can now run the server by executing the following command:
 ```
