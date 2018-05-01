@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Top</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
 </head>
 <body>
+	<center>
+        <h1>Top Table</h1>
+    </center>
+    <table border="2">
+        <tr>
+            <th>Title</th>
+            <th>Link</th>
+            <th>SubReddit</th>
+        </tr>
 
+        {% for post in posts %}
+            <tr>
+                <td>{{ post['title'] }}</td>
+                <td>{{ post['link'] }}</td>
+                <td>{{ post['subreddit'] }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
 </body>
 </html>
