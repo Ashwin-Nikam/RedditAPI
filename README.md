@@ -15,19 +15,14 @@ $ sudo pip3 install virtualenv
 ## Running the server
 * Clone this repo and cd into it.
 ```
-$ git clone <this-repo>
-$ cd <this-repo>
+$ git clone https://github.com/Ashwin-Nikam/RedditAPI.git
+$ cd RedditAPI
 ```
 * Run the virtual environment
 ```
 $ source venv/bin/activate
 ```
-* Now that our venv is up and running we can install Flask and BeautifulSoup in our venv
-```
-$ pip3 install Flask
-$ pip3 install bs4
-```
-* Now that all the necessary libraries are installed we can run the server by executing the following command:
+* Now that venv is running, we have all the necessary libraries installed. We can now run the server by executing the following command:
 ```
 $ python3 Main.py
 ```
@@ -37,11 +32,9 @@ $ python3 Main.py
 ```
 http://127.0.0.1:5000
 ```
-* You'll be taken to the welcom page of this basic API.
+* You'll be taken to the welcome page of this basic API.
 
 ### Types of request
-* Type in the following URLs in the browser and see the results.
-
 #### Get hot posts
 ```
 http://127.0.0.1:5000/gethot
@@ -54,7 +47,7 @@ http://127.0.0.1:5000/gettop
 
 #### Get rising posts
 ```
-http://127.0.0.1:5000/gettop
+http://127.0.0.1:5000/getrising
 ```
 
 ## Tools and Technologies used
